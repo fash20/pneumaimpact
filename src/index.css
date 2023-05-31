@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: inter;
+    src: url( ./components//assets/fonts/Inter/static/Inter-Medium.ttf );
+}
+@font-face {
+    font-family: interlight;
+    src: url( ./components//assets/fonts/Inter/static/Inter-Light.ttf );
+}
+@font-face {
+    font-family: poppins;
+    src: url( ./components/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: dm-sans;
+    src: url( ./components/assets/fonts/DM_Sans/DMSans-Medium.ttf);
+}
+@font-face {
+    font-family: dm-sansr;
+    src: url( ./components/assets/fonts/DM_Sans/DMSans-Regular.ttf);
+}
+@font-face {
+    font-family: z-cool;
+    src: url( ./components/assets/fonts/ZCOOL_XiaoWei/ZCOOLXiaoWei-Regular.ttf);
+}
+@font-face {
+    font-family: nunito-sans;
+    src: url( ./components/assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf);
+}
+@font-face {
+    font-family: roboto;
+    src: url( ./components/assets/fonts/Roboto/Roboto-Medium.ttf);
+}
+
+
+@layer base{
+    html {
+        font-family: Proxima Nova, system-ui, sans-serif;
+    }
+}

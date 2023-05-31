@@ -1,0 +1,188 @@
+#form-back{
+
+    animation: form 4s ease-in-out infinite alternate;
+}
+
+#form-front{
+    animation: form 4s ease-in-out infinite alternate-reverse ;
+}
+#gears{
+    animation: form 4s ease-in-out infinite alternate-reverse  ;
+}
+
+#man{
+    animation: person 3s ease-in-out infinite alternate;
+}
+#woman{
+    animation: person 3s ease-in-out infinite alternate-reverse;
+}
+#comment-1, #comment-3{
+    animation: comment 2s ease-in-out infinite alternate;
+}
+#comment-2{
+    animation: comment 4s ease-in-out infinite alternate-reverse;
+}
+#slide-left{
+    animation: comments 4s ease-in-out infinite alternate-reverse;
+}
+
+#Vector_128, #Vector_147, #Vector_127,#Group-4,#Vector_148{
+
+    animation: transaction 3s ease-in-out infinite alternate;
+}
+
+
+#side-one{
+    position: relative;
+    animation: sideOne 1s linear 1 ;
+}
+#side-two{
+    position: relative;
+    animation: sideTwo 1s linear 1 ;
+}
+#trans-down{
+    position: relative;
+    animation: translatedown 1s linear 1 ;
+}
+#trans-up{
+    position: relative;
+    animation: translateup 1s linear 1  ;
+}
+
+#fade-in{
+  animation: fadeIn .3s linear  1 ;
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes transaction {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes sideOne {
+    from{
+        transform: translate(30%);
+    }
+    to{
+        transform: translate(0%);
+    }
+}
+@keyframes sideTwo {
+
+    from{
+        transform: translate(-30%);
+    }
+    to{
+        transform: translate(0%);
+    }
+}
+
+@keyframes form {
+    from{
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(25deg);
+    }
+}
+@keyframes translatedown {
+
+    from{
+        transform: translateY(-30%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+    
+}
+@keyframes translateup {
+
+    from{
+        transform: translateY(30%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+    
+}
+
+@keyframes person {
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translate(-20px);
+    }
+    
+}
+@keyframes comment {
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translateY(-15px);
+    }
+    
+}
+
+
+.c-animation-1{
+
+    animation:  carousel 1.5s 1 linear;
+}
+.c-animation-2{
+
+    animation:  carousel2 1.5s 1 linear;
+}
+.c-animation-3{
+
+    animation:  carousel3 .5s 1 linear;
+}
+
+.back {
+    background: #f1f1f1;
+    transform: perspective(800px) rotateY(180deg);
+  }
+  
+  .front {
+    transform: perspective(800px) rotateY(0deg);
+  }
+
+@keyframes carousel {
+    from{
+        transform: translateY(50%);
+    }
+    to{
+        transform: translateY(0%);
+    }
+}
+
+@keyframes carousel2 {
+    0%{
+        opacity: 0.1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes carousel3 {
+    0%{
+        transform: rotateY(0deg);;
+    }
+    100%{
+        transform: rotateY(-180deg);;
+    }
+}
+
+
