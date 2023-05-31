@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { render } from "react-dom";                 
+import ReactDom from "react-dom";                 
 import { Toaster } from 'react-hot-toast';
 
-render(
+ReactDom.render(
   <React.StrictMode>
     <Toaster />
     <App />
