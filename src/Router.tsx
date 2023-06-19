@@ -224,7 +224,7 @@ export const Router = () => {
         element={
           <>
             <AboutNav />
-            <About />
+            <AboutUs />
           </>
         }
       />
@@ -239,12 +239,12 @@ export const Router = () => {
           </ProtectedRoute>
         }
       />
-      <Route
+      {/* <Route
         path="/aboutus"
         element={
           <AboutUs />
         }
-      />
+      /> */}
       <Route
         path="/admin/usermanagement"
         element={

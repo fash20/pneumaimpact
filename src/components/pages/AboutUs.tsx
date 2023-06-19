@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import BoxGroup from "./AboutSVGs/BoxGroup";
 import Underline from "./AboutSVGs/Underline";
 import CandleGroup from "./AboutSVGs/CandleGroup";
-import { Button, useMediaQuery } from "@mui/material";
+import { Button, TextField, useMediaQuery } from "@mui/material";
 import CheckMarkSVG from "./AboutSVGs/CheckMarkSVG";
 import image1 from "../assets/images/about/image1s.png";
 import image2 from "../assets/images/about/image2s.png";
@@ -12,7 +12,7 @@ import image5 from "../assets/images/about/image5s.png";
 import image6 from "../assets/images/about/image6s.png";
 import image7 from "../assets/images/about/image7s.png";
 import image9 from "../assets/images/about/image9s.png";
-import { navButtonStyle, theme } from "../utils/UIThemes";
+import { BrandButtonStyle, navButtonStyle, theme } from "../utils/UIThemes";
 import bioImg from "../assets/images/about/bio.png";
 
 const vision = `Our vision is to foster a thriving entrepreneurial 
@@ -92,36 +92,39 @@ const services = [
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col space-y-20 ">
+    <div className="flex flex-col space-y-20 mt-10 mb-10 ">
       <div className="flex flex-col  items-center justify-center p-5 md:p-8 lgp-12">
-      <div className="flex flex-col items-center justify-center space-y-7 max-w-[857px]">
-        <span className=" font-quentin text-center text-[30px] md:text-[45px] text-primaryTextColor tracking-wide">
-          We are ready to consult for your business growth
-        </span>
+        <div className="flex flex-col items-center justify-center space-y-7 max-w-[857px]">
+          <span className=" font-quentin text-center text-[30px] md:text-[45px] text-primaryTextColor tracking-wide">
+            We are ready to consult for your business growth
+          </span>
 
-        <div className="flex flex-col space-y-10">
-          <p
-            className="font-inter text-[16px] leading-6 text-center"
-            style={{ fontWeight: 400 }}
-          >
-            At Pneuma Impact, we believe that entrepreneurship is a major driver
-            of economic growth, and that every entrepreneur deserves the chance
-            to succeed. Our team of experienced trainers and mentors work
-            closely with entrepreneurs to help them develop the skills and
-            knowledge including digital skills they need to create successful
-            businesses, while our funding programs provide the resources needed
-            to turn their ideas into reality.
-          </p>
+          <div className="flex flex-col space-y-10">
+            <p
+              className="font-inter text-[16px] leading-6 text-center"
+              style={{ fontWeight: 400 }}
+            >
+              At Pneuma Impact, we believe that entrepreneurship is a major
+              driver of economic growth, and that every entrepreneur deserves
+              the chance to succeed. Our team of experienced trainers and
+              mentors work closely with entrepreneurs to help them develop the
+              skills and knowledge including digital skills they need to create
+              successful businesses, while our funding programs provide the
+              resources needed to turn their ideas into reality.
+            </p>
+          </div>
+          <div className=" flex space-x-5 p-6">
+            <Button style={navButtonStyle} variant="pneumaBlue">
+              Contact Us
+            </Button>
+            <Button style={navButtonStyle} variant="pneumaWhite">
+              Our Services
+            </Button>
+          </div>
         </div>
-        <div className=" flex space-x-5 p-6">
-          <Button style={navButtonStyle} variant="pneumaBlue">Contact Us</Button>
-          <Button style={navButtonStyle} variant="pneumaWhite">Our Services</Button>
+        <div className="w-full md:w-[80%] lg:max-w-[772px]">
+          <img src={bioImg} alt="bio" className=" object-contain" />
         </div>
-      </div>
-      <div className="w-full md:w-[80%] lg:max-w-[772px]">
-        <img src={bioImg} alt='bio' className=" object-contain" />
-      </div>
-      
       </div>
       <div>
         <VisionAndMission
@@ -159,6 +162,9 @@ const AboutUs = () => {
             />
           ))}
         </div>
+      </div>
+      <div className=" flex items-center justify-center">
+        <ReachUsForm />
       </div>
     </div>
   );
@@ -233,7 +239,12 @@ const VisionAndMission: React.FC<VisionAndMission> = ({
             {body}
           </span>
           <div>
-            <Button style={{ outline: color }} variant={color === "#2F327D"? "pneumaBlue" : "pneumaWhite"}>Contact Us</Button>
+            <Button
+              style={{ outline: color }}
+              variant={color === "#2F327D" ? "pneumaBlue" : "pneumaWhite"}
+            >
+              Contact Us
+            </Button>
           </div>
         </div>
       </div>
@@ -251,7 +262,7 @@ const ServiceCardWithImage: React.FC<ServiceCard> = ({
   const isScreenSmall = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <div
-      className={`grid grid-cols-1  md:grid-cols-2  space-y-10 md:space-y-0 md:space-x-10  md:w-full lg:w-[974px] my-10 `}
+      className={`grid grid-cols-1  md:grid-cols-2  gap-y-10 md:space-y-0 md:gap-x-10  md:w-full lg:w-[974px] my-10 `}
     >
       <div className={`${!isScreenSmall ? order : ""}`}>
         <img src={image} className=" img-about" />
@@ -276,6 +287,109 @@ const ServiceCardWithImage: React.FC<ServiceCard> = ({
         >
           Take Course
         </Button>
+      </div>
+    </div>
+  );
+};
+
+interface ContactUsFormData {
+  name: string;
+  email: string;
+  subject: string;
+  body: string;
+}
+
+const ReachUsForm = () => {
+  const [formData, setFormData] = useState<ContactUsFormData>({
+    name: "",
+    email: "",
+    subject: "",
+    body: "",
+  });
+
+  const onChangeFormData = (
+    input: string,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (input) {
+      case "name":
+        setFormData({ ...formData, name: event.target.value });
+        break;
+      case "email":
+        setFormData({ ...formData, email: event.target.value });
+        break;
+      case "subject":
+        setFormData({ ...formData, subject: event.target.value });
+        break;
+      case "body":
+        setFormData({ ...formData, body: event.target.value });
+        break;
+
+    }
+  };
+  return (
+    <div className="px-5 flex flex-col space-y-8 lg:space-y-16 items-center justify-center  md:w-full lg:w-[974px] my-10">
+      <h1 className="font-outfit text-center  text-[30px] md:text-[40px] leading-[52px] tracking-widest">
+        You can reach out to Us
+      </h1>
+      <div className="flex  flex-col sm:space-y-5  lg:flex-row lg:space-x-5 ">
+        <div className="flex space-y-5 flex-col sm:w-full lg:w-[35%] pt-10 font-inter text-[16px] leading-6">
+          {/* <p>
+            apidiously reconceptualize visionary imperatives without 24/365
+            catalysts for change. Completely streamline functionalized models
+            and out-of-the-box functionalities. Authoritatively target
+          </p> */}
+          <span> pneumaimpact@gmail.com </span>
+          <span> +234 807 364 8625 </span>
+          <span>
+            {" "}
+            Apartment No. 3, Banana Island, Alph beach road, Lekki Lagos
+          </span>
+          <div>
+            <span>Follow us on:</span>
+          </div>
+        </div>
+        <div className="flex flex-col space-y-5 w-[90%] lg:w-[65%]">
+          <div className="grid grid-cols-2 space-x-5 ">
+            <TextField
+              variant="outlined"
+              placeholder="Name"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                onChangeFormData("name", event)
+              }
+            />
+            <TextField
+              variant="outlined"
+              placeholder="E-mail"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                onChangeFormData("email", event)
+              }
+            />
+          </div>
+          <TextField
+            variant="outlined"
+            placeholder="Subject"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              onChangeFormData("subject", event)
+            }
+          />
+          <TextField
+            variant="outlined"
+            multiline
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              onChangeFormData("body", event)
+            }
+          />
+          <div className="flex justify-end">
+            <Button
+              variant="pneumaBlue"
+              style={{ ...BrandButtonStyle,fontWeight: 200 }}
+              onClick={()=> alert(JSON.stringify(formData))}
+            >
+              Send Message
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

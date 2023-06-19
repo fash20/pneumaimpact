@@ -558,6 +558,16 @@
   border: 5px solid #00008b;
 
 }
+.avatar2 {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  /* background-repeat:  no-repeat right center/cover; */
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+
+}
 
 .upload-courese-image {
 
