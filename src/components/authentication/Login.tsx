@@ -108,7 +108,7 @@ const Login = () => {
         />
       </div>
       {<Toaster />}
-      {isScreenSmall && (
+      {/* {isScreenSmall && (
         <div className="flex justify-around ">
           <IconButton className="gap-x-1">
             <img
@@ -117,7 +117,7 @@ const Login = () => {
               className={`${!isScreenSmall ? "" : `drop-shadow-xl`}`}
             />
           </IconButton>
-          {/* <GoogleLogin
+          <GoogleLogin
             clientId={clientId}
             buttonText="Sign in with Google"
             onSuccess={() => onSuccess}
@@ -129,10 +129,10 @@ const Login = () => {
               src={facebookIcon}
               alt="facebookIcon"
               className={`${!isScreenSmall ? "" : `drop-shadow-xl`}`}
-            />
-          </IconButton> */}
+            /> 
+          </IconButton>
         </div>
-      )}
+      )} */}
       {!isScreenSmall && (
         <div className="flex justify-around ">
           {/* <Button className="gap-x-1" variant="outlined">

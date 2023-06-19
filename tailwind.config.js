@@ -35,7 +35,9 @@ module.exports = {
       zcool:["z-cool"],
       interlight:["interlight"],
       nuSans:["nunito-sans"],
-      roboto:["roboto"]
+      roboto:["roboto"],
+      quentin:["quentin"],
+      outfit:["outfit"]
     },
     extend: {
       backgroundImage: theme => ({"man":"url('/components/assets/images/frontpagebg.svg')"})

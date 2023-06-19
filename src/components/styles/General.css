@@ -9,7 +9,6 @@
   background-repeat: no-repeat;
   height: fit-content;
 }
-
 .img {
   max-width: 100%;
   max-height: 100%;
@@ -64,6 +63,11 @@
 }
 
 @font-face {
+  font-family: Quentin;
+  src: url(../assets/fonts/Quentin/QuentinPro.ttf);
+}
+
+@font-face {
   font-family: inter;
   src: url(../assets/fonts/Inter/static/Inter-Medium.ttf);
 }
@@ -77,6 +81,7 @@
   font-family: narutosans;
   src: url(../assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf);
 }
+
 @font-face {
   font-family: roboto;
   src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
@@ -155,31 +160,47 @@
 }
 
 .step-title-blue {
-  font-family: poppins;
+  font-family: Quentin;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 50px;
   color: #2F327D;
+  line-height: 64px;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.04em;
 }
 
 .step-title-red {
-  font-family: poppins;
-  font-weight: 700;
-  font-size: 40px;
+  font-family: Quentin;
+  font-size: 50px;
   color: #FF5364;
+  line-height: 64px;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0.04em;
 }
 
 .step-title-blue1 {
-  font-family: narutosans;
-  font-weight: 700;
+  font-family: Quentin;
+  /* font-weight: 700; */
   /* font-size: 30px; */
   color: #2F327D;
+  line-height: 64px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 160%;
+  letter-spacing: 0.04em;
+
 }
 
 .step-title-red1 {
-  font-family: narutosans;
-  font-weight: 600;
-  /* font-size: 30px; */
+  font-family: Quentin;
   color: #FF5364;
+  line-height: 64px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 160%;
+  letter-spacing: 0.04em;
 }
 
 .step-detail {
@@ -318,7 +339,8 @@
   background-image: url('../assets/images/FooterBackground.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  /* height: 563px; */
+  height: fit-content;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -388,12 +410,11 @@
   }
 
   .footer {
-    /* background-image: url('../assets/images/footermobile.svg');
+    background-image: url('../assets/images/footermobile.svg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 563px;
-    width: 100%; */
-    /* background-color: #2F327D; */
+    width: 100%;
   }
 
   .sub-input {
@@ -450,15 +471,15 @@
 
 }
 
-.input-style{
-   /* margin-left: 10px; */
-   font-size: 30px;
-   width: 8000px;
-   height: 40px;
-   text-align: center;
-   border-radius: 10%;
-   color: #2F327D;
-   border: 1px solid #2F327D;
+.input-style {
+  /* margin-left: 10px; */
+  font-size: 30px;
+  width: 8000px;
+  height: 40px;
+  text-align: center;
+  border-radius: 10%;
+  color: #2F327D;
+  border: 1px solid #2F327D;
 
 }
 
@@ -484,9 +505,11 @@
 #upload-input {
   display: none
 }
+
 #upload-input1 {
   display: none
 }
+
 #upload-input2 {
   display: none
 }
@@ -523,8 +546,8 @@
 
 .avatar {
   position: absolute;
-  top:5%;
-  left:3%;
+  top: 5%;
+  left: 3%;
   width: 200px;
   height: 200px;
   background-color: #fff;
@@ -535,7 +558,8 @@
   border: 5px solid #00008b;
 
 }
-.upload-courese-image{
+
+.upload-courese-image {
 
   width: 200px;
   height: 200px;
@@ -545,19 +569,40 @@
   background-size: cover;
   border: 1px solid #00008b;
 }
-.cameraicon{
+
+.cameraicon {
   position: absolute;
 }
 
-.frontpage-text{
+.frontpage-text {
   font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 197.5%;
-/* or 36px */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 197.5%;
+  /* or 36px */
 
-letter-spacing: 0.035em;
+  letter-spacing: 0.035em;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 }
+
+.background-div {
+  background-image: url('../assets/images/bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: fit-content;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.img-container-about{
+  max-width: 477px;
+  height: auto;
+  overflow: hidden;
+} 
+.img-about{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+} 

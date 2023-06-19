@@ -31,7 +31,7 @@ const AboutNav = () => {
         <a href="/">
           <div className="flex justify-center items-center space-x-3 sm:space-x-4 ">
             <img className="w-10 h-10" src={logo} alt="logo" />
-            <label className=" font-zcool text-lg sm:text-xl  md:text-2xl text-white">Pneuma impact</label>
+            <label className=" font-zcool text-lg sm:text-xl  md:text-2xl text-white">Pneuma Impact</label>
           </div>
         </a>
         {isScreenSmall && (

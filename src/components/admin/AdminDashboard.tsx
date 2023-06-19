@@ -9,11 +9,13 @@ const dashboardItem = [
     name: "User Management",
     icon: <ContactsOutlined fontSize="large" style={{color:'#2F327D'}} />,
     link: "/admin/usermanagement",
+    isDisabled: true
   },
   {
     name: "Course Management",
     icon: <LibraryAddOutlined fontSize="large" style={{color:'#2F327D'}} />,
     link: "/admin/coursemanagement",
+    isDisabled: false
   },
 ];
 
@@ -23,7 +25,7 @@ const AdminDashboard = () => {
       <span className=" font-inter text-lg">Admin Dashboard</span>
       <div className="flex flex-row ">
         {dashboardItem.map((item, key) => (
-          <ADCard name={item.name} icon={item.icon} link={item.link} key={key}/>
+          <ADCard name={item.name} icon={item.icon} link={item.link} key={key} isDisabled={item.isDisabled} />
         ))}
       </div>
     </div>
@@ -36,11 +38,12 @@ interface IADCardProps {
   name: string;
   icon: ReactNode;
   link: string;
+  isDisabled: boolean
 }
 
-const ADCard = ({ name, icon, link }: IADCardProps) => {
+const ADCard = ({ name, icon, link, isDisabled }: IADCardProps) => {
   return (
-    <Link to={link}>
+    <Link to={link} hidden={isDisabled}>
       <div className=" shadow-sm w-36 h-40 hover:shadow-lg m-4 p-2 flex flex-col items-center justify-center space-y-3">
         <div>{icon}</div>
         <span className=" text-center">{name}</span>

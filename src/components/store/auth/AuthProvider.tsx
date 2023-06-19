@@ -28,7 +28,11 @@ export const AuthProvider:FunctionComponent<AuthProviderProps> = ({ children }) 
       const {  token, user:{email, isVerified, role  } } = await response.json();
       const user = {  token, user: {email, isVerified, role}};
       dispatch({ type: "SIGN_IN", payload: user });
-        navigate('/explore')
+      if (isVerified === true ){
+        navigate('/explore')}
+      else {
+        navigate('/verification')
+      }
     } else {
       toast.error("Login error")
     }

@@ -8,6 +8,7 @@ import FrontPage from "./FrontPage";
 import Target from "./Target";
 import Travel from "./Travel";
 import Phone from "./Phone";
+import HowItWorks from "./HowItWorks";
 
 
 const Home = () => {
@@ -16,9 +17,9 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [])
   return (
-    <div className="grid grid-cols-1 gap-y-10 lg:gap-36">
+    <div className="grid grid-cols-1 ">
       <FrontPage />
-      <OurFeature />
+      <HowItWorks />
       <Target />
       <Travel />
       <Phone />

@@ -12,7 +12,7 @@ const Stats: React.FC<Stats> = (props) => {
   const { title, value } = props;
 
   return (
-      <div className="flex flex-col stats gap-1 p-4 w-[100px] ">
+      <div className="flex flex-col stats gap-1 p-4 w-[70px] md:w-[100px] ">
         <CountUp
           start={0}
           end={value}

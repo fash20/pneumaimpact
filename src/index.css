@@ -34,6 +34,14 @@
     font-family: roboto;
     src: url( ./components/assets/fonts/Roboto/Roboto-Medium.ttf);
 }
+@font-face {
+    font-family: Quentin;
+    src: url( ./components/assets/fonts/Quentin/QuentinPro.ttf);
+}
+@font-face {
+    font-family: Outfit;
+    src: url( ./components/assets/fonts/Outfit/Outfit-Regular.ttf);
+}
 
 
 @layer base{

@@ -7,6 +7,8 @@ import image2 from '../assets/images/testimonials/image2.jpeg'
 import image3 from '../assets/images/testimonials/image3.jpeg'
 import image6 from '../assets/images/testimonials/image6.jpg'
 import image7 from '../assets/images/testimonials/image7.png'
+import { IconButton}  from "@mui/material";
+import { ArrowLeftSharp, ArrowRight } from "@material-ui/icons";
 
 const Testimonials= [
   {
@@ -94,8 +96,8 @@ const OurReview = () => {
           
         </div>
         <div className=" flex space-x-3 justify-center  ">
-          {/* <IconButton icon={ArrowLeftIcon} onClick={handleDecrement} />
-          <IconButton icon={ArrowRightIcon} onClick={handleIncrement} /> */}
+          <IconButton   onClick={handleDecrement} > <ArrowLeftSharp/>  </IconButton>
+          <IconButton  onClick={handleIncrement} > <ArrowRight />  </IconButton>
         </div>
       </div>
     </div>

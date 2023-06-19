@@ -7,11 +7,11 @@ const Phone = () => {
   return (
     <div className='p-5 md:p-10 xl:p-20 flex flex-col space-y-20'>
         <div className="grid  grid-col-1 space-y-4 lg:grid-cols-2 lg:space-y-0 mt-3 mb-2 ">
-            <div className=' font-nuSans text-3xl  max-w-[350px]  tracking-wider  '>
-                <span className="step-title-blue">
+            <div className=' font-nuSans text-xl  max-w-[350px]  tracking-wider  '>
+                <span className="step-title-blue1">
                    Win an {" "}
                 </span>
-                <span className="step-title-red">
+                <span className="step-title-red1">
                      iPhone 13 Pro max
                 </span>
             </div>
@@ -24,9 +24,13 @@ const Phone = () => {
         </div>
         <div className='grid grid-col-1 space-y-10 lg:grid-cols-2 lg:space-y-0  mt-3 mb-2 '>
             <div className='flex flex-col space-y-10 ml-3 md:ml-7 max-w-[550px] lg:ml-10 '>
-                <span className="font-nuSans text-3xl max-w-[450px] tracking-wider  ">
-                Entrepreneurship  Summit
-                </span>
+                <div>
+                <span className="step-title-blue1 tracking-widest"> Entrepreneurship  {" "} </span>
+                <span className="step-title-red1 tracking-widest">  Summit </span>
+                </div>
+                {/* <span className="font-nuSans text-3xl max-w-[450px] tracking-wider  ">
+               
+                </span> */}
                 <div className='hiw-sub text-sm leading-8 tracking-wider space-y-3'> 
                 <p> All our students will be invited to a physical entrepreneurship Summit where notable speakers 
                     will be brought to speak to them. </p> 

@@ -22,9 +22,9 @@ const Footer = () => {
         <div className="flex flex-col space-y-6 m-3">
           <div className="inline-flex space-x-2 items-center">
             <img className="h-[45px] w-[45px]" src={logo} alt="logo" />
-            <h3 className="font-zcool text-[22px] text-white">Pnuemalmpact</h3>
+            <h3 className="font-zcool text-[22px] text-white">Pnuema Impact</h3>
           </div>
-          <p className="font-dmSansr text-gray">We train, we fund, we mentor.</p>
+          <p className="font-dmSansr text-gray">Empowering African entrepreneurial spirit </p>
           <div className="inline-flex flex-row space-x-2">
             <a href='https://www.facebook.com/profile.php?id=100083285375332' target="_blank">
               <FacebookIcon />
@@ -69,7 +69,7 @@ const Footer = () => {
             </span>
             <span className="inline-flex space-x-2">
               <LocationOnIcon />
-              <h4>Bodija Estate, House no. 5, Ibadan</h4>
+              <h4>Apartment No. 3, Banana Island, Alph beach road, Lekki Lagos </h4>
             </span>
           </span>
         </div>

@@ -42,7 +42,7 @@ const Collection = () => {
 
   const getData = () => {
     axios
-      .get("https://api.pneumaimpact.ng/v1/api/courses/", {
+      .get("https://api.pneumaimpact.ng/v1/api/courses/published", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

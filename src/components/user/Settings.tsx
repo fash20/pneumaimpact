@@ -40,7 +40,7 @@ const Settings = () => {
   const handleUpload = () => {
     axios
       .post(
-        "https://api.pneumaimpact.ng/v1/api//",
+        "https://api.pneumaimpact.ng/",
         {
           course,
         },
@@ -150,7 +150,7 @@ interface UserInfo {
   email: string;
   phone: string;
   country: string;
-  city: string;
+  state: string;
 }
 
 const SettingsForm = () => {
@@ -162,8 +162,10 @@ const SettingsForm = () => {
     email: "",
     phone: "",
     country: "",
-    city: "",
+    state: "",
   });
+
+
 
   const onchange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -191,8 +193,8 @@ const SettingsForm = () => {
       case "country":
         setUserInfo({ ...userInfo, country: event.target.value });
         break;
-      case "city":
-        setUserInfo({ ...userInfo, city: event.target.value });
+      case "state":
+        setUserInfo({ ...userInfo, state: event.target.value });
         break;
       default:
         break;
@@ -254,9 +256,9 @@ const SettingsForm = () => {
           }
         />
         <TextInput
-          label="City"
+          label="State"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            onchange(event, "city")
+            onchange(event, "state")
           }
         />
       </div>

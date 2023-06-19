@@ -27,6 +27,8 @@ import Dashboard from "./components/user/Library";
 import Settings from "./components/user/Settings";
 import UserManagement from "./components/admin/UserManagement";
 import CourseManagement from "./components/admin/CourseManagement";
+import HowItWorks from "./components/home/HowItWorks";
+import AboutUs from "./components/pages/AboutUs";
 
 export const Router = () => {
   return (
@@ -238,6 +240,12 @@ export const Router = () => {
         }
       />
       <Route
+        path="/aboutus"
+        element={
+          <AboutUs />
+        }
+      />
+      <Route
         path="/admin/usermanagement"
         element={
           <ProtectedRoute>
@@ -259,6 +267,12 @@ export const Router = () => {
           </>
         }
       />
+      <Route
+        path="/howitworks"
+        element = {
+          <HowItWorks />
+        }
+        />
       <Route
         path="*"
         element={
