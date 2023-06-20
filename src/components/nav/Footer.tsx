@@ -32,7 +32,7 @@ const Footer = () => {
             <a href='https://twitter.com/PneumaImpact' target="_blank">
               <TwitterIcon />
             </a>
-            <a href='https://instagram.com/pneuma_impact?igshid=YmMyMTA2M2Y=' target="_blank">
+            <a href='https://instagram.com/pneumaimpact_ng?igshid=MzRlODBiNWFlZA==' target="_blank">
                 <InstagramIcon />
             </a>
             <a href='https://www.linkedin.com/' target="_blank">
@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="flex flex-col space-y-4  items-start  px-4  m-3">
           <h3 className="font-dmSans text-[bold]">Company</h3>
           <span className="font-dmSansr flex flex-col space-y-3 text-gray">
-            <h4>About us</h4>
+             <Link to='/about'>About us</Link>
             <h4>Contact us</h4>
             <h4><a href='/explore'>Explore </a></h4>
           </span>
@@ -54,15 +54,15 @@ const Footer = () => {
         <div className="flex flex-col space-y-4 items-start px-4  m-3">
           <h3 className="font-dmSans text-[bold]">Support</h3>
           <span className="font-dmSansr flex flex-col space-y-3 text-gray">
-            <h4>Getting Started</h4>
-            <h4>Help Center</h4>
+            <Link to="/signup">Getting Started</Link>
+            <Link to='/'>Help Center</Link>
           </span>
         </div>
         <div className="flex flex-col space-y-4 items-start px-4  m-3">
           <h3 className="font-dmSans text-[bold]">Contact Us</h3>
           <span className="font-dmSansr flex flex-col space-y-3 text-gray">
             <span className="inline-flex space-x-2">
-              <MailIcon /> <h4>About us</h4>
+              <MailIcon /> <Link to='/about'>About us</Link>
             </span>
             <span className="inline-flex space-x-2">
               <PhoneIcon /> <h4>+234 807 364 8625</h4>

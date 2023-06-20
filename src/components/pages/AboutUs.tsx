@@ -11,7 +11,10 @@ import image4 from "../assets/images/about/image4s.png";
 import image5 from "../assets/images/about/image5s.png";
 import image6 from "../assets/images/about/image6s.png";
 import image7 from "../assets/images/about/image7s.png";
+import image8 from "../assets/images/about/image8s.png";
 import image9 from "../assets/images/about/image9s.png";
+import image10 from "../assets/images/about/image10s.png";
+
 import { BrandButtonStyle, navButtonStyle, theme } from "../utils/UIThemes";
 import bioImg from "../assets/images/about/bio.png";
 
@@ -74,7 +77,7 @@ const services = [
     title: "Marketing and branding",
     body: `Assistance with developing effective marketing and branding strategies to promote the entrepreneur's 
     products or services and help them reach their target audience.`,
-    image: image7,
+    image: image8,
   },
   {
     title: " Internationalization and export support",
@@ -86,7 +89,7 @@ const services = [
     title: "Exit planning and strategy",
     body: `guidance on developing an exit plan or strategy for the entrepreneur, whether through sale, merger, 
     or other means, to maximize the value of their business.`,
-    image: image9,
+    image: image10,
   },
 ];
 

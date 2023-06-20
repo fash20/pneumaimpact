@@ -33,7 +33,7 @@ const Travel = () => {
           <span className="step-title-red1 tracking-widest">foreign {" "}</span>
           <span className="step-title-blue1 tracking-widest">and {" "}</span>
           <span className="step-title-red1 tracking-widest">local {" "} </span>
-          <span className="step-title-red1 tracking-widest"> investor </span>
+          <span className="step-title-red1 tracking-widest"> investors </span>
           </div>
           <div className="hiw-sub text-sm leading-8 tracking-wider space-y-3">
             <p> We have an investment portfolios totaling 3M US dollars. </p>
