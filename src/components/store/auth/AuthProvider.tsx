@@ -34,7 +34,13 @@ export const AuthProvider:FunctionComponent<AuthProviderProps> = ({ children }) 
         navigate('/verification')
       }
     } else {
-      toast.error("Login error")
+      try {
+        const errorResponse = await response.json();
+        const errorMessage = errorResponse.message;
+        toast.error(errorMessage);
+      } catch (error) {
+        toast.error("An error occurred while processing your request.");
+      }
     }
   };
 

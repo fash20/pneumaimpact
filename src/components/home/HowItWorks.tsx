@@ -5,6 +5,7 @@ import { Button, useMediaQuery } from "@mui/material";
 import training from "../assets/images/training.png";
 import MentorshipSVG from "./homeSVGs/MentorshipSVG";
 import FundingSVG from "./homeSVGs/FundingSVG";
+import bola from '../assets/images/bola.jpeg'
 
 const HowItWorks = () => {
   return (
@@ -26,7 +27,7 @@ const HowItWorks = () => {
           title={<Title2 />}
           body={<CoursesDetails coursesArray={coursesArray} />}
           imageString={training}
-          order={"last"}
+          order={"order-last"}
           background={"#F6F7FF"}
         />
         <Step
@@ -40,10 +41,21 @@ const HowItWorks = () => {
         />
         <Step
           title={<Title4 />}
-          body={`Entrepreneurs that have successfully passed the training will be eligible for grants of $1000. This is to support early growth, 
-            and enhance their business operation. This fund is given to entrepreneurs who meet the participatory requirements.`}
-          image={<FundingSVG />}
-          order={"last"}
+          body={<div className="flex flex-col space-y-3">
+            <span>
+            Upon successful completion of the Training, access to the mentorship community will be provided where seasoned mentors will be 
+            responsible for providing you with strategic guidance on your entrepreneurship journey. 
+            </span>
+            <span>
+            One  of our mentors is Bolaji Fesomade; He  is an experienced business consultant/coach with almost a decade in the business world. 
+            He's founded two micro finance institutes with each having an annual turn over of  60m naira. He's richly  experienced in raising funds
+             for start-ups. He's raised over 80m naira both in Nigeria and abroad for start-ups. 
+            </span>
+
+          </div>}
+          // image={<FundingSVG />}
+          imageString={bola}
+          order={"order-last"}
           background={"#F6F7FF"}
         />
       </div>
@@ -67,7 +79,7 @@ const Step: React.FC<Step> = ({ title, body, image, imageString, order, backgrou
   const isScreenSmall = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <div className={`grid grid-row lg:grid-cols-2 justify-center grid-cols-1 gap-y-5 min-h-[70vh] px-5 py-10 md:px-10 lg:px-40 `} style={{background:background}}>
-      <div className={`flex flex-col m-5 lg:m-10 lg:order-${order} space-y-5 ${isScreenSmall ? "" : ""} `}>
+      <div className={`flex flex-col m-5 lg:m-10 lg:${order} space-y-5 ${isScreenSmall ? "" : ""} `}>
         <span>{title}</span>
         <div className="step-detail text-center md:text-left font-roboto">
           {body}

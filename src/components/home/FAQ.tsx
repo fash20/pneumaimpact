@@ -18,7 +18,7 @@ const FAQ = () => {
           />
           <Questions
             question="How much is the whole program?"
-            answer="The whole program costs N20,000."
+            answer="The whole program costs N30,000."
           />
           <Questions
             question="How am I sure the courses will benefit me?"

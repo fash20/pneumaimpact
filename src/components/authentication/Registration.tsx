@@ -88,7 +88,13 @@ const Registration = () => {
         navigate('/verification')
       })
       .catch(err=>{
-        toast.error("Unable to complete registration: "+err )
+        if (err.response) {
+          const errorData = err.response.data;
+          const errorMessage = errorData.message;
+          toast.error("Unable to complete registration: " + JSON.stringify(err.response.data));
+        } else {
+          toast.error("An error occurred while processing your request.");
+        }
       })
       
     }
