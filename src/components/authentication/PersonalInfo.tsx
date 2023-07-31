@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import logo from "../assets/images/pneumaImpact-logo.svg";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import countries from "i18n-iso-countries";
-import ReactFlagsSelect from "react-flags-select";
 import "../styles/General.css";
 import {
   TextField,
@@ -13,6 +12,10 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { BrandButtonStyle } from "../utils/UIThemes";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../store/auth/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const PersonalInfo = () => {
   const [selectedCountry, setSelectedCountry] = useState("Nigeria");
@@ -20,7 +23,8 @@ const PersonalInfo = () => {
     setSelectedCountry(value);
   };
   countries.registerLocale(enLocale);
-
+  const { userData : {token} } = useAuth();
+  const navigate = useNavigate();
   const countryObj = countries.getNames("en", { select: "official" });
   const countryArr = Object.entries(countryObj).map((key, value) => {
     return {
@@ -29,13 +33,46 @@ const PersonalInfo = () => {
     };
   });
   const [personalInfo, setPersonalInfo] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     country: "",
     state: "",
-    countryCode: "",
-    telephone: "",
+    nationalCode: "",
+    phoneNumber: "",
+    educationallevel:""
   });
+
+  const educationalLevel = [
+    'Primary Education',
+    'Secondary Education',
+    'Tetiary Education',
+  ]
+
+  const handleSavePersonalInfo = () => {
+    axios
+      .post(
+        "https://api.pneumaimpact.ng/v1/api/auth/verify-user-account",
+        {
+          ...personalInfo
+        }
+        ,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+      .then((res) => {
+        // userData.isverified = true;
+        // let user = JSON.parse(localStorage.getItem("user"));
+        // if (user) {
+        //   user.isVerified = true;
+        //   localStorage.clear();
+        //   localStorage.setItem("user", JSON.stringify(user));
+          navigate("/explore");
+        // }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  }
 
   const onchange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -43,10 +80,10 @@ const PersonalInfo = () => {
   ) => {
     switch (input) {
       case "firstname":
-        setPersonalInfo({ ...personalInfo, firstname: event.target.value });
+        setPersonalInfo({ ...personalInfo, firstName: event.target.value });
         break;
       case "lastname":
-        setPersonalInfo({ ...personalInfo, lastname: event.target.value });
+        setPersonalInfo({ ...personalInfo, lastName: event.target.value });
         break;
       case "country":
         setPersonalInfo({ ...personalInfo, country: selectedCountry });
@@ -55,10 +92,13 @@ const PersonalInfo = () => {
         setPersonalInfo({ ...personalInfo, state: event.target.value });
         break;
       case "countryCode":
-        setPersonalInfo({ ...personalInfo, countryCode: event.target.value });
+        setPersonalInfo({ ...personalInfo, nationalCode: event.target.value });
+        break;
+      case "educationallevel":
+        setPersonalInfo({ ...personalInfo, educationallevel: event.target.value });
         break;
       case "telephone":
-        setPersonalInfo({ ...personalInfo, telephone: event.target.value });
+        setPersonalInfo({ ...personalInfo, phoneNumber: event.target.value });
         break;
       default:
         break;
@@ -127,6 +167,18 @@ const PersonalInfo = () => {
               onchange(event, "telephone")
             }
              />
+             <Select
+                labelId="helper-label"
+                id="helper"
+                value={selectedCountry}
+                label="Educational Level"
+                onChange={handleChange}
+              >
+                {educationalLevel.map(value => (
+                  <MenuItem value={value}>{value}</MenuItem>
+                ))}
+              </Select>
+
           </div>
           <Button variant="pneumaBlue" style={BrandButtonStyle} onClick={()=> {
             alert(JSON.stringify(personalInfo  ))

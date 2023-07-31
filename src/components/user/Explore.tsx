@@ -114,7 +114,7 @@ const Explore = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center space-y-6">
-          <div className="flex space-x-7 mx-4">
+          {/* <div className="flex space-x-7 mx-4">
             <Button size="large" style={TabButtonStyle}>
               All
             </Button>
@@ -124,7 +124,7 @@ const Explore = () => {
             <Button size="large" style={TabButtonStyle}>
               Copywriting
             </Button>
-          </div>
+          </div> */}
           <div className="grid justify-center items-center grid-cols-1 md:grid-cols-2 md:items-start md:justify-left lg:grid-cols-3 gap-5 bg-white mb-10 md:mb-20 ">
             {/* <CourseCardBrief />
             <CourseCardBrief />

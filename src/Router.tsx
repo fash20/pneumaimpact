@@ -140,7 +140,7 @@ export const Router = () => {
           </ProtectedRoute>
         }
       />
-      <Route
+      {/* <Route
         path="/profile"
         element={
           <ProtectedRoute>
@@ -149,7 +149,7 @@ export const Router = () => {
             </UserNav>
           </ProtectedRoute>
         }
-      />
+      /> */}
       <Route
         path="/course/id/:id"
         element={

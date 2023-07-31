@@ -93,7 +93,7 @@ const UserCard = () => {
         /> */}
         <img
           className="rounded-full border border-gray-100 shadow-sm"
-          src="https://randomuser.me/api/portraits/women/81.jpg"
+          // src="https://randomuser.me/api/portraits/women/81.jpg"
           alt="user image"
         />
       </div>

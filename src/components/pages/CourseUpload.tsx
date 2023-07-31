@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { Button, IconButton, TextField } from "@mui/material";
+import { Button, IconButton, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import { SelectedItem } from "../user/Audit";
 import { DeleteOutlined, CameraAlt } from "@mui/icons-material";
 import { BrandButtonStyle } from "../utils/UIThemes";
@@ -18,6 +18,7 @@ interface Course {
   filename: string;
   subtitle: string;
   tags: Array<string>;
+  status: string
 }
 
 const CourseUpload = () => {
@@ -55,6 +56,11 @@ const CourseUpload = () => {
     }
   };
 
+  const courseStatus = [
+    'published',
+    'not published'
+  ]
+
   const handleUpload = () => {
     axios
       .post("https://api.pneumaimpact.ng/v1/api/courses", course, {
@@ -64,6 +70,10 @@ const CourseUpload = () => {
         toast.success("course uploaded succsessfully ");
       })
       .catch((err) => toast.error("unable to upload course "));
+  };
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setCourse({...course, status: event.target.value})
   };
 
   const onchange = (
@@ -180,6 +190,18 @@ const CourseUpload = () => {
             }
           />
           <TextField placeholder="Category" size="small" />
+
+          <Select
+                labelId="helper-label"
+                id="helper"
+                // value={courseStatus}
+                label="Educational Level"
+                onChange={handleChange}
+              >
+                {courseStatus.map(value => (
+                  <MenuItem value={value}>{value}</MenuItem>
+                ))}
+              </Select>
         </div>
         <div className="flex items-center w-full">
           {previewImage && (
@@ -251,7 +273,7 @@ const CourseUpload = () => {
               </div>
             )}
           </div>
-          <Button>Upload File</Button>
+          <Button onClick={handleFileUpload} >Upload File</Button>
         </div>
         <div className="flex w-full items-center justify-center">
           <Button
@@ -260,7 +282,7 @@ const CourseUpload = () => {
             style={BrandButtonStyle}
             onClick={handleUpload}
           >
-            Upload
+            Upload Course
           </Button>
         </div>
       </div>
