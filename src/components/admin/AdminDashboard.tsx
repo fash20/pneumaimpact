@@ -9,7 +9,7 @@ const dashboardItem = [
     name: "User Management",
     icon: <ContactsOutlined fontSize="large" style={{color:'#2F327D'}} />,
     link: "/admin/usermanagement",
-    isDisabled: true
+    isDisabled: false
   },
   {
     name: "Course Management",

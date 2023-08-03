@@ -19,10 +19,12 @@ import { useNavigate } from "react-router-dom";
 
 const PersonalInfo = () => {
   const [selectedCountry, setSelectedCountry] = useState("Nigeria");
+  const [selectedEducationalLevel, setSelectedEducationalLevel] = useState("");
+
   const selectCountryHandler = (value: string) => {
     setSelectedCountry(value);
   };
-  countries.registerLocale(enLocale);
+  countries.registerLocale(enLocale); 
   const { userData : {token} } = useAuth();
   const navigate = useNavigate();
   const countryObj = countries.getNames("en", { select: "official" });
@@ -36,10 +38,10 @@ const PersonalInfo = () => {
     firstName: "",
     lastName: "",
     country: "",
-    state: "",
     nationalCode: "",
-    phoneNumber: "",
-    educationallevel:""
+    state: "",
+    educationalLevel:"",
+    phoneNumber: ""
   });
 
   const educationalLevel = [
@@ -51,7 +53,7 @@ const PersonalInfo = () => {
   const handleSavePersonalInfo = () => {
     axios
       .post(
-        "https://api.pneumaimpact.ng/v1/api/auth/verify-user-account",
+        "https://api.pneumaimpact.ng/v1/api/profile",
         {
           ...personalInfo
         }
@@ -60,17 +62,12 @@ const PersonalInfo = () => {
           headers: { Authorization: `Bearer ${token}` },
         })
       .then((res) => {
-        // userData.isverified = true;
-        // let user = JSON.parse(localStorage.getItem("user"));
-        // if (user) {
-        //   user.isVerified = true;
-        //   localStorage.clear();
-        //   localStorage.setItem("user", JSON.stringify(user));
+          toast.success("Your profile has been updated!")
           navigate("/explore");
         // }
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error('unable to complete the request');
       });
   }
 
@@ -95,7 +92,7 @@ const PersonalInfo = () => {
         setPersonalInfo({ ...personalInfo, nationalCode: event.target.value });
         break;
       case "educationallevel":
-        setPersonalInfo({ ...personalInfo, educationallevel: event.target.value });
+        setPersonalInfo({ ...personalInfo, educationalLevel: event.target.value });
         break;
       case "telephone":
         setPersonalInfo({ ...personalInfo, phoneNumber: event.target.value });
@@ -109,6 +106,10 @@ const PersonalInfo = () => {
     setSelectedCountry(event.target.value);
     setPersonalInfo({ ...personalInfo, country: event.target.value });
   };
+  const handleEductionalLevelChange = (event: SelectChangeEvent) => {
+    setSelectedEducationalLevel(event.target.value);
+    setPersonalInfo({ ...personalInfo, educationalLevel: event.target.value });
+  };
 
   return (
     <div className="grid grid-cols-1 mx-10 my-10 gap-y-14 ">
@@ -120,7 +121,7 @@ const PersonalInfo = () => {
         />
       </div>
       <div className="text-center">
-        <h3 className=" text-lg">Personal Inofrmation</h3>
+        <h3 className=" text-lg">Personal Information</h3>
       </div>
       <div className="grid grid-cols-1 gap-y-10">
         <div className=" grid grid-cols-1 space-y-5">
@@ -170,9 +171,9 @@ const PersonalInfo = () => {
              <Select
                 labelId="helper-label"
                 id="helper"
-                value={selectedCountry}
+                value={selectedEducationalLevel}
                 label="Educational Level"
-                onChange={handleChange}
+                onChange={handleEductionalLevelChange}
               >
                 {educationalLevel.map(value => (
                   <MenuItem value={value}>{value}</MenuItem>
@@ -180,10 +181,7 @@ const PersonalInfo = () => {
               </Select>
 
           </div>
-          <Button variant="pneumaBlue" style={BrandButtonStyle} onClick={()=> {
-            alert(JSON.stringify(personalInfo  ))
-            
-          }}>
+          <Button variant="pneumaBlue" style={BrandButtonStyle} onClick={handleSavePersonalInfo}>
             Next
           </Button>
         </div>

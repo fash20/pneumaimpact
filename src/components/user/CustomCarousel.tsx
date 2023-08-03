@@ -6,36 +6,36 @@ import cimage2 from "../assets/images/carousel/cimage2.png";
 import cimage3 from "../assets/images/carousel/cimage3.png";
 import CustomButton from "../ui/CustomButton";
 
-// const ImageText1 = () => {
-//   return (
-//     // <div className="h-full w-full">
-//     <div className=" flex flex-col space-y-2 md:space-y-8  items-end justify-start text-white">
-//       <span className="text-right">
-//         <h4 className="text-sm">SUMMER 2023</h4>
-//       </span>
+const ImageText1 = () => {
+  return (
+    // <div className="h-full w-full">
+    <div className=" flex flex-col space-y-2 md:space-y-8  items-end justify-start text-white">
+      {/* <span className="text-right">
+        <h4 className="text-sm">SUMMER 2023</h4>
+      </span>
 
-//       <h2 className=" text-xl md:text-2xl lg:text-4xl font-inter font-bold ">
-//         NEW COLLECTION
-//       </h2>
-//       <span className="max-w-[270px]">
-//         <p className=" text-gray text-[12px] lg:text-sm ">
-//           We know how large objects will act, but things on a small scale.
-//         </p>
-//       </span>
-//       <CustomButton
-//         // variant="contained"
-//         style={{ backgroundColor: "#fff", textTransform: "uppercase" }}
-//         title="Buy now"
-//       />
-//     </div>
-//     // </div>
-//   );
-// };
+      <h2 className=" text-xl md:text-2xl lg:text-4xl font-inter font-bold ">
+        NEW COLLECTION
+      </h2>
+      <span className="max-w-[270px]">
+        <p className=" text-gray text-[12px] lg:text-sm ">
+          We know how large objects will act, but things on a small scale.
+        </p>
+      </span>
+      <CustomButton
+        // variant="contained"
+        style={{ backgroundColor: "#fff", textTransform: "uppercase" }}
+        title="Buy now"
+      /> */}
+    </div>
+    // </div>
+  );
+};
 
 const ImageText2 = () => {
   return (
     <div className=" absolute flex  flex-col items-center justify-center space-y-2 text-white">
-      <span className="text-left">
+      {/* <span className="text-left">
         <Button style={{ backgroundColor: "#FFF" }} size="small">
           SUMMER 2023
         </Button>
@@ -50,7 +50,7 @@ const ImageText2 = () => {
         size="large"
       >
         Get now
-      </Button>
+      </Button> */}
     </div>
   );
 };
@@ -58,23 +58,7 @@ const ImageText2 = () => {
 const ImageText3 = () => {
   return (
     <div className="absolute flex-col items-start space-y-2   text-white">
-      <h2 className=" text-xl md:text-2xl lg:text-4xl font-inter font-bold ">
-        NEW COLLECTION
-      </h2>
-      <span className="max-w-[350px] text-center">
-        <p className=" text-gray text-[16px] lg:text-lg ">
-          We know how large objects will act, but things on a small scale.
-        </p>
-      </span>
-      <CustomButton
-        // variant="contained"
-        style={{
-          backgroundColor: "#23A6F0",
-          color: "#fff",
-          textTransform: "none",
-        }}
-        title="Start Now"
-      />
+      {/* */}
     </div>
   );
 };

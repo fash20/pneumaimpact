@@ -165,7 +165,7 @@ const Course = () => {
                     description={courseData.description}
                     createdAt={courseData.createdAt}
                   />
-                  <div className="flex flex-col gap-5 font-medium">
+                  {/* <div className="flex flex-col gap-5 font-medium">
                     <span>
                       <h3 className="font-poppins text-xl text-PrimaryGray">
                         Related Courses
@@ -178,13 +178,13 @@ const Course = () => {
                       <CourseCard />
                       <CourseCard />
                     </div>
-                  </div>
-                  <div className="grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4">
+                  </div> */}
+                  {/* <div className="grid justify-center items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4">
                     <CourseTag name="Tag 1" />
                     <CourseTag name="Tag 2" />
                     <CourseTag name="Tag 3" />
                     <CourseTag name="Tag 1" />
-                  </div>
+                  </div> */}
                 </div>
                 ;
               </div>

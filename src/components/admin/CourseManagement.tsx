@@ -22,7 +22,6 @@ interface CourseDataRow {
 const CourseManagement = () => {
   const navigate = useNavigate()
   const [courseData, setCourseData] = useState<Array<CourseDataRow>>([]);
-  const [isLoading, setIsLoadng] = useState(true);
   const { userData : {token} } = useAuth();
   const [loadingProp, setLoadingProp] = useState({
     isloading: true,
@@ -71,7 +70,6 @@ const CourseManagement = () => {
       getData()
       .then((data) => {
         setCourseData(data);
-        console.log(data)
       })
       .catch((error) => {
         toast.error('Error fetching course data:', error)
