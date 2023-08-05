@@ -79,15 +79,14 @@ const UserManagement = () => {
   
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
     { field: 'email', headerName: 'Email', width: 300 },
-
     { field: "publish", headerName: "Update Payment Status", width: 130, renderCell: (params: GridRenderCellParams) => (
       <Button variant="contained"  onClick={() => handleClickOpen(params.row.id)}>
        <PaidIcon />
       </Button>
     ),  },
+    { field: 'firstName', headerName: 'First name', width: 130 },
+    { field: 'lastName', headerName: 'Last name', width: 130 },
   ];
 
   useEffect(() => {
@@ -137,9 +136,6 @@ const UserManagement = () => {
 
   return (
     <div className="flex flex-col w-full mt-9 p-5 space-y-5">
-      {
-        toast.success(rowCountState.toString())
-      }
         <div style={{ height: 500, width: '100%' }}>
       <DataGrid
          rows={studentData}
