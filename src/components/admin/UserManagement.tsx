@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { ReactElement, useEffect, useState, forwardRef,Ref } from 'react'
+import { DataGrid, GridColDef, GridRenderCellParams, } from '@mui/x-data-grid';
 import { useAuth } from '../store/auth/AuthProvider';
 import toast from 'react-hot-toast';
 import checkTokenExp from '../utils/checkTokenExp';
@@ -9,11 +9,11 @@ import { TransitionProps } from '@mui/material/transitions';
 import PaidIcon from '@mui/icons-material/Paid';
 
 
-const Transition = React.forwardRef(function Transition(
+const Transition = forwardRef(function Transition(
   props: TransitionProps & {
-    children: React.ReactElement<any, any>;
+    children: ReactElement<any, any>;
   },
-  ref: React.Ref<unknown>,
+  ref: Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -25,9 +25,27 @@ interface StudentDataRow {
 const UserManagement = () => {
   const { userData : {token} } = useAuth();
   const [studentData, setStudentData] = useState<Array<StudentDataRow>>([]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate()
   const [userId, setUserID] = useState("");
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 20,
+  });
+  const [rowCountState, setRowCountState] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageInfo, setPageInfo] = useState({
+    totalRows: 0
+  })
+
+
+  const handlePageChange = (params: {page:number}) => {
+    // setPaginationModel({ page: params.page, pageSize: paginationModel.pageSize });
+    setPaginationModel(prevPaginationModel => ({
+      ...prevPaginationModel,
+      page: 1,
+    }));
+  };
 
   const handleClickOpen = (userID: string) => {
     setUserID(userID);
@@ -63,7 +81,7 @@ const UserManagement = () => {
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'firstName', headerName: 'First name', width: 130 },
     { field: 'lastName', headerName: 'Last name', width: 130 },
-    { field: 'email', headerName: 'Email', width: 130 },
+    { field: 'email', headerName: 'Email', width: 300 },
 
     { field: "publish", headerName: "Update Payment Status", width: 130, renderCell: (params: GridRenderCellParams) => (
       <Button variant="contained"  onClick={() => handleClickOpen(params.row.id)}>
@@ -73,25 +91,32 @@ const UserManagement = () => {
   ];
 
   useEffect(() => {
-    document.title = "Pneumalmpact - Course Management";
+    const {page} = paginationModel;
+    document.title = "Pneumalmpact - User Management";
+
+    setRowCountState((prevRowCountState) =>
+      pageInfo?.totalRows !== undefined
+        ? pageInfo?.totalRows
+        : prevRowCountState,
+    );
+    
     if (!checkTokenExp(token)) {
       navigate("/login");
     } else {
-      getData()
+      getData(page)
       .then((data) => {
         setStudentData(data);
       })
       .catch((error) => {
-        toast.error('Error fetching course data:', error)
-        console.error('Error fetching course data:', error);
+        toast.error('Error fetching users:', error)
       });
     }
-  }, []);
+  }, [currentPage, pageInfo?.totalRows, setRowCountState]);
   
   
-  const getData = async () => {
+  const getData = async (page: number) => {
     try {
-      const response = await fetch('https://api.pneumaimpact.ng/v1/api/students/', {
+      const response = await fetch(`https://api.pneumaimpact.ng/v1/api/students/?page=${currentPage}&perPage=20`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -99,6 +124,7 @@ const UserManagement = () => {
       });
 
       const data = await response.json();
+      setPageInfo({...pageInfo, totalRows: data.totalDocs})
       return data.docs.map((student:any) => ({
         id: student._id,
         email: student.email,
@@ -111,18 +137,20 @@ const UserManagement = () => {
 
   return (
     <div className="flex flex-col w-full mt-9 p-5 space-y-5">
-
-        <div style={{ height: 400, width: '100%' }}>
+      {
+        toast.success(rowCountState.toString())
+      }
+        <div style={{ height: 500, width: '100%' }}>
       <DataGrid
-        rows={studentData}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[10, 20]}
-        checkboxSelection
+         rows={studentData}
+         columns={columns}
+         rowCount={rowCountState}
+         checkboxSelection
+         pagination
+         pageSizeOptions={[5, 10, 20]}
+         paginationMode="server"
+         paginationModel={paginationModel}
+         onPaginationModelChange={setPaginationModel}
       />
 
 <Dialog
@@ -143,6 +171,24 @@ const UserManagement = () => {
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
+    </div>
+    <div>
+      <Button onClick={ ()=> {
+        if (currentPage > 1){
+          setCurrentPage(currentPage -1)
+        }
+        else{
+          toast.error("Last Page")
+        }
+      }}>Prev</Button>
+      <Button onClick={()=>{
+        if (currentPage < rowCountState){
+          setCurrentPage(currentPage+1)
+        }
+        else{
+          toast.error("Last Page")
+        }
+      }}>Next</Button>
     </div>
     </div>
   )
