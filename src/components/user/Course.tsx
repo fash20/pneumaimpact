@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import book from "../assets/images/book.svg";
 import book2 from "../assets/images/book2.svg";
 import courseimage from "../assets/images/courseimage.svg";
-import { Star, FiberManualRecordRounded } from "@mui/icons-material";
+import { Star, FiberManualRecordRounded, DownloadOutlined, Download } from "@mui/icons-material";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -189,7 +189,6 @@ const Course = () => {
                     <CourseTag name="Tag 1" />
                   </div> */}
                 </div>
-                ;
               </div>
             );
         }
@@ -266,12 +265,6 @@ const CourseInfo: React.FC<Course> = ({
 }) => {
   const navigate = useNavigate();
 
-  const navigateToPDFViewer = () => {
-    const props = {
-      title: title,
-      pdfUrl: pdfUrl,
-    };
-  };
   return (
     <div className="flex flex-col md:flex-row  space-y-5 md:space-x-5 md:space-y-0 ">
       <div className=" p-10 border-[1px] border-grayMarginColor  ">
@@ -330,9 +323,10 @@ const CourseInfo: React.FC<Course> = ({
               navigate('/course/viewer/', { state: { pdfUrl: pdfUrl, title: title } });
           }}
         >
+          <DownloadOutlined />
           Get this course
         </Button>
       </div>
     </div>
-  );
+  )
 };
