@@ -29,6 +29,7 @@ import UserManagement from "./components/admin/UserManagement";
 import CourseManagement from "./components/admin/CourseManagement";
 import HowItWorks from "./components/home/HowItWorks";
 import AboutUs from "./components/pages/AboutUs";
+import PDFReader from "./components/pages/PDFReader";
 
 export const Router = () => {
   return (
@@ -156,6 +157,16 @@ export const Router = () => {
           <ProtectedRoute>
           <UserNav>
             <Course />
+          </UserNav>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/course/viewer/"
+        element={
+          <ProtectedRoute>
+          <UserNav>
+            <PDFReader  />
           </UserNav>
           </ProtectedRoute>
         }

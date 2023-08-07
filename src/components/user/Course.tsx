@@ -4,7 +4,7 @@ import book from "../assets/images/book.svg";
 import book2 from "../assets/images/book2.svg";
 import courseimage from "../assets/images/courseimage.svg";
 import { Star, FiberManualRecordRounded } from "@mui/icons-material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ReactLoading from "react-loading";
@@ -19,6 +19,7 @@ interface Course {
   downloadUrl?: string;
   createdAt?: string;
   image?: string;
+  pdfUrl?: string;
 }
 
 const Course = () => {
@@ -53,6 +54,7 @@ const Course = () => {
           description: res.data.course.description,
           image: res.data.course.image,
           createdAt: res.data.course.createdAt,
+          pdfUrl: res.data.course.filename,
         });
       })
       .catch((err) => {
@@ -164,6 +166,7 @@ const Course = () => {
                     image={courseData.image}
                     description={courseData.description}
                     createdAt={courseData.createdAt}
+                    pdfUrl={courseData.pdfUrl}
                   />
                   {/* <div className="flex flex-col gap-5 font-medium">
                     <span>
@@ -259,7 +262,16 @@ const CourseInfo: React.FC<Course> = ({
   description,
   image,
   createdAt,
+  pdfUrl,
 }) => {
+  const navigate = useNavigate();
+
+  const navigateToPDFViewer = () => {
+    const props = {
+      title: title,
+      pdfUrl: pdfUrl,
+    };
+  };
   return (
     <div className="flex flex-col md:flex-row  space-y-5 md:space-x-5 md:space-y-0 ">
       <div className=" p-10 border-[1px] border-grayMarginColor  ">
@@ -279,9 +291,9 @@ const CourseInfo: React.FC<Course> = ({
             <Star fontSize={"small"} />
             <Star fontSize={"small"} />
           </div>
-          <span>
+          {/* <span>
             <h2 className="font-interlight text-2xl ">Tara Liye</h2>
-          </span>
+          </span> */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Avatar style={{ width: 24, height: 24 }} />
@@ -305,8 +317,20 @@ const CourseInfo: React.FC<Course> = ({
         <div className="font-interlight text-sm lg:text-xl my-5 max-w-[750px] ">
           {description}
         </div>
-        <Button style={BrandButtonStyle} variant="pneumaBlue">
-          Get
+        <Button
+          style={BrandButtonStyle}
+          variant="pneumaBlue"
+          onClick={() => {
+            // toast.success(pdfUrl);
+            if (!pdfUrl){
+              toast.error('This user is not a paid User. Proceeding to the payment page')
+              navigate('/payment')
+            }
+            else
+              navigate('/course/viewer/', { state: { pdfUrl: pdfUrl, title: title } });
+          }}
+        >
+          Get this course
         </Button>
       </div>
     </div>
