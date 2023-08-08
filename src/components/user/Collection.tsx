@@ -219,7 +219,7 @@ const Course = ({
                 className="text-primaryTextColor"
                 fontSize="small"
               />
-              <h5>Leson {lessonCount}</h5>
+              <h5>Lesson {lessonCount}</h5>
             </span>
             <span className="flex space-x-1">
               <AccessTimeIcon
