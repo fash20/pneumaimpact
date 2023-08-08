@@ -108,6 +108,7 @@ const Explore = () => {
                   key={item._id}
                   tags={item.tags}
                   _id={item._id}
+                  slug = {item.slug}
                 />
               ))
             )}
@@ -189,6 +190,7 @@ interface ICourseProps {
   download?: number;
   status?: string;
   tags?: string[];
+  slug?:string
 }
 
 const Course = ({
@@ -197,6 +199,7 @@ const Course = ({
   image,
   detail,
   _id,
+  slug,
  tags
 }: ICourseProps) => {
   return (
@@ -212,7 +215,7 @@ const Course = ({
            ))}   */}
         </div>
         <div className="py-2 h-[70px]">
-          <Link to={`/course/id/${_id}`} className="hover:underline">
+          <Link to={`/course/${slug}`} className="hover:underline">
             <h4 className="text-md">{title}</h4>
           </Link>
         </div>

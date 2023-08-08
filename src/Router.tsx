@@ -152,7 +152,7 @@ export const Router = () => {
         }
       /> */}
       <Route
-        path="/course/id/:id"
+        path="/course/:slug"
         element={
           <ProtectedRoute>
           <UserNav>

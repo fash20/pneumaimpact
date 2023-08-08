@@ -23,7 +23,7 @@ interface Course {
 }
 
 const Course = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id, slug } = useParams<{ id: string, slug:string}>();
   const [loadingProp, setLoadingProp] = useState({
     isloading: true,
     failed: false,
@@ -41,7 +41,7 @@ const Course = () => {
 
   const getData = () => {
     axios
-      .get("https://api.pneumaimpact.ng/v1/api/courses/id/" + id, {
+      .get("https://api.pneumaimpact.ng/v1/api/courses/" + slug, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
