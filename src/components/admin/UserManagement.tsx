@@ -57,9 +57,10 @@ const UserManagement = () => {
   };
 
   const updatePaymentStatus = async () => {
+    let date = new Date().toISOString().slice(0, 10);
     const url = `https://api.pneumaimpact.ng/v1/api/students/${userId}/mark-as-paid`
     try {
-      const response = await fetch(url, {
+      const response = await fetch(url,  {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -67,7 +68,7 @@ const UserManagement = () => {
       });
 
       const data = await response.json();
-      toast.success("Update Completed " + JSON.stringify(data))
+      toast.success("Update Completed" + JSON.stringify(data))
     } catch (error) {
       toast.error("Failed to fetch course data")
       throw new Error('Failed to fetch course data');

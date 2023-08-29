@@ -52,9 +52,9 @@ const Course = () => {
         setCourseData({
           title: res.data.course.title,
           description: res.data.course.description,
-          image: res.data.course.image,
+          image: res.data.course.imageUrl,
           createdAt: res.data.course.createdAt,
-          pdfUrl: res.data.course.filename,
+          pdfUrl: res.data.course.fileUrl,
         });
       })
       .catch((err) => {
@@ -301,8 +301,7 @@ const CourseInfo: React.FC<Course> = ({
                 fontSize="small"
               />
               <h3 className="font-interlight text-gray">
-                {" "}
-                {toWeeksAgo(createdAt)}{" "}
+                {toWeeksAgo(createdAt)}
               </h3>
             </div>
           </div>

@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { Button, IconButton, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from "@mui/material";
 import { SelectedItem } from "../user/Audit";
 import { DeleteOutlined, CameraAlt } from "@mui/icons-material";
 import { BrandButtonStyle } from "../utils/UIThemes";
@@ -18,7 +25,7 @@ interface Course {
   filename: string;
   subtitle: string;
   tags: Array<string>;
-  status: string
+  status: string;
 }
 
 const CourseUpload = () => {
@@ -28,10 +35,19 @@ const CourseUpload = () => {
     userData: { token },
   } = useAuth();
   const [course, setCourse] = useState<Course>();
-  const [image, setImage] = useState("");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
+
+  var config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: "http://localhost:3000/v1/api/courses/",
+    headers: {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlBuZXVtYWltcGFjdG5nQGdtYWlsLmNvbSIsImlhdCI6MTY5MTQ4MjIxNiwiZXhwIjoxNjkyMDg3MDE2fQ.lq__syyzdBeh5uBH6xXLApJw-VK9iIeFgiBV0y_w0bU"',
+      "Content-Type": "application/json",
+    },
+    data: course,
   };
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     setSelectedFile(file);
@@ -48,7 +64,8 @@ const CourseUpload = () => {
       filePath
         .then((result: any) => {
           toast.success("File uploaded");
-          setCourse({ ...course, filename: result.data.filename.location });
+          console.log(result.data)
+          setCourse({ ...course, filename: result.data.key });
         })
         .catch((err) => {
           toast.error("Unable to upload file");
@@ -56,10 +73,7 @@ const CourseUpload = () => {
     }
   };
 
-  const courseStatus = [
-    'published',
-    'not published'
-  ]
+  const courseStatus = ["published", "not published"];
 
   const handleUpload = () => {
     axios
@@ -73,7 +87,7 @@ const CourseUpload = () => {
   };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setCourse({...course, status: event.target.value})
+    setCourse({ ...course, status: event.target.value });
   };
 
   const onchange = (
@@ -126,15 +140,13 @@ const CourseUpload = () => {
 
   const handleImageUpload = () => {
     if (selectedImage) {
-      console.log(selectedImage.get("file"));
-
       let filePath = uploadFile(selectedImage, {
         headers: { Authorization: `Bearer ${token}` },
       });
       filePath
         .then((result: any) => {
           toast.success("File uploaded");
-          setCourse({ ...course, image: result.data.filename.location });
+          setCourse({ ...course, image: result.data.key });
         })
         .catch((err) => {
           console.log(err);
@@ -146,9 +158,7 @@ const CourseUpload = () => {
     <div className="flex flex-col w-full justify-center items-center space-y-5 p-7">
       <div className=" flex flex-col w-full sm:w-11/12 md:w-8/12 justify-center  space-y-5">
         <div>
-          <span className=" text-3xl ">
-            Upload Course
-          </span>
+          <span className=" text-3xl ">Upload Course</span>
         </div>
         <div className="flex flex-col space-y-2">
           <TextField
@@ -192,16 +202,16 @@ const CourseUpload = () => {
           <TextField placeholder="Category" size="small" />
 
           <Select
-                labelId="helper-label"
-                id="helper"
-                // value={courseStatus}
-                label="Educational Level"
-                onChange={handleChange}
-              >
-                {courseStatus.map(value => (
-                  <MenuItem value={value}>{value}</MenuItem>
-                ))}
-              </Select>
+            labelId="helper-label"
+            id="helper"
+            // value={courseStatus}
+            label="Educational Level"
+            onChange={handleChange}
+          >
+            {courseStatus.map((value) => (
+              <MenuItem value={value}>{value}</MenuItem>
+            ))}
+          </Select>
         </div>
         <div className="flex items-center w-full">
           {previewImage && (
@@ -230,7 +240,7 @@ const CourseUpload = () => {
 
           <Button onClick={handleImageUpload}>Upload Image</Button>
         </div>
-        <div className=" flex " >
+        <div className=" flex ">
           <div className="flex flex-col w-full items-center">
             <div className="flex relative w-full h-[100px] bg-lightBlue justify-center items-center space-x-4">
               <label
@@ -265,7 +275,6 @@ const CourseUpload = () => {
                 <IconButton
                   onClick={() => {
                     // setSelectedFile({});
-                    
                   }}
                 >
                   <DeleteOutlined />
@@ -273,7 +282,7 @@ const CourseUpload = () => {
               </div>
             )}
           </div>
-          <Button onClick={handleFileUpload} >Upload File</Button>
+          <Button onClick={handleFileUpload}>Upload File</Button>
         </div>
         <div className="flex w-full items-center justify-center">
           <Button
