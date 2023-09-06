@@ -67,11 +67,12 @@ const UserManagement = () => {
 
   const updatePaymentStatus = async () => {
     let date = new Date().toISOString().slice(0, 10);
+    const dateObj = { date_of_payment: date };
     const url = `https://api.pneumaimpact.ng/v1/api/students/${userId}/mark-as-paid`;
+
     let data = JSON.stringify({
       date_of_payment: date,
     });
-    
     let config = {
       method: "post",
       maxBodyLength: Infinity,
